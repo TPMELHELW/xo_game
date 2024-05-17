@@ -6,12 +6,14 @@ import 'package:xo_game/utils/functions/snack_bar.dart';
 
 class BoardController extends GetxController {
   static BoardController get instance => Get.find<BoardController>();
+  late TextEditingController xPlayer, oPlayer;
 
   ///variable
   late Rx<bool> isOturn, isEnd;
   late RxList<String> options;
-  late Rx<int> xPlayerScore, oPlayerScore;
+  late Rx<int> xPlayerScore, oPlayerScore, draw;
   final welcomeController = WelcomeController.instance;
+  GlobalKey<FormState> formState = GlobalKey();
 
   List<List<int>> winning = [
     [0, 1, 2],
@@ -27,7 +29,6 @@ class BoardController extends GetxController {
   ///Reset Game fun
   void initGame() {
     options.value = ['', '', '', '', '', '', '', '', ''];
-    isOturn.value = true;
     isEnd.value = false;
   }
 
@@ -35,6 +36,7 @@ class BoardController extends GetxController {
   void initResult() {
     xPlayerScore.value = 0;
     oPlayerScore.value = 0;
+    draw.value = 0;
   }
 
   ///Check winner
@@ -47,21 +49,24 @@ class BoardController extends GetxController {
           !isOturn.value ? oPlayerScore.value++ : xPlayerScore.value++;
           showSnackBar('Congratulation', '${options[winningPosition[0]]} Win',
               options[winningPosition[0]] == 'X' ? Colors.red : Colors.blue);
-          await Future.delayed(const Duration(milliseconds: 500));
           initGame();
           return;
         }
       }
     }
 
-    checkTieFun();
+    checkDrawFun();
   }
 
   ///Check Tie Fun
-  void checkTieFun() {
+  void checkDrawFun() {
     options.contains('')
         ? null
-        : {showSnackBar('Draw', 'No Win', Colors.white)};
+        : {
+            showSnackBar('Draw', 'No Win', Colors.white),
+            draw.value++,
+            initGame()
+          };
   }
 
   ///Two Player Fun
@@ -70,12 +75,10 @@ class BoardController extends GetxController {
       options[index] = 'O';
       isOturn.value = !isOturn.value;
       checkWinner();
-      // checkTieFun();
     } else if (!isOturn.value && options[index] == '') {
       options[index] = 'X';
       isOturn.value = !isOturn.value;
       checkWinner();
-      // checkTieFun();
     }
   }
 
@@ -97,6 +100,7 @@ class BoardController extends GetxController {
   ///Easy Level
   void easyComputerMove() {
     if (isEnd.value) return;
+
     var emptyIndices = List<int>.generate(options.length, (i) => i)
         .where((index) => options[index] == '')
         .toList();
@@ -128,7 +132,7 @@ class BoardController extends GetxController {
         return;
       }
     }
-    if (isEnd.value) return;
+
     var emptyIndices = List<int>.generate(options.length, (i) => i)
         .where((index) => options[index] == '')
         .toList();
@@ -145,6 +149,9 @@ class BoardController extends GetxController {
     isEnd = false.obs;
     xPlayerScore = 0.obs;
     oPlayerScore = 0.obs;
+    draw = 0.obs;
+    xPlayer = TextEditingController();
+    oPlayer = TextEditingController();
 
     super.onInit();
   }

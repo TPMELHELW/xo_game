@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xo_game/common/button_widget.dart';
 import 'package:xo_game/common/custom_app_bar_widget.dart';
-import 'package:xo_game/features/board/board_screen.dart';
 import 'package:xo_game/features/welcome/controller/welcome_controller.dart';
+import 'package:xo_game/features/welcome/widget/type_name_widget.dart';
 import 'package:xo_game/utils/constants/image.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -27,11 +27,10 @@ class WelcomeScreen extends StatelessWidget {
               FadeTransition(
                 opacity: controller.firstButtonAnimation,
                 child: ButtonWidget(
-                  text: 'Two Player',
-                  onPress: () => Get.to(
-                    () => const BoardScreen(isTwoPlayer: true),
-                  ),
-                ),
+                    text: 'Two Player',
+                    onPress: () => Get.to(() => const TypeName(
+                          isTwoPlayer: true,
+                        ))),
               ),
               const SizedBox(
                 height: 20,
@@ -41,7 +40,9 @@ class WelcomeScreen extends StatelessWidget {
                 child: Obx(
                   () => ElevatedButton.icon(
                     onPressed: () {
-                      Get.to(() => const BoardScreen(isTwoPlayer: false));
+                      Get.to(() => const TypeName(
+                            isTwoPlayer: false,
+                          ));
                     },
                     icon: DropdownButton<String>(
                       padding: const EdgeInsets.only(right: 30),
@@ -70,16 +71,3 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-// Stack(
-//                   children: [
-//                     ButtonWidget(
-//                       text: 'Play With Computer',
-//                       onPress: () => Get.to(
-//                         () => const BoardScreen(isTwoPlayer: false),
-//                       ),
-//                     ),
-                  
-//                   ],
-//                 ),

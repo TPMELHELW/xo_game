@@ -16,7 +16,15 @@ class PlayerResultWidget extends StatelessWidget {
           children: [
             Column(
               children: [
-                const Text('O result'),
+                Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: controller.isOturn.value
+                          ? Colors.blue
+                          : Colors.transparent,
+                    ),
+                    child: Text(controller.oPlayer.text)),
                 Text(
                   '${controller.oPlayerScore.value}',
                   style: const TextStyle(fontSize: 30),
@@ -25,7 +33,33 @@ class PlayerResultWidget extends StatelessWidget {
             ),
             Column(
               children: [
-                const Text('X result'),
+                Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                    ),
+                    child: const Text('Draw')),
+                Text(
+                  '${controller.draw.value}',
+                  style: const TextStyle(fontSize: 30),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: !controller.isOturn.value
+                        ? Colors.red
+                        : Colors.transparent,
+                  ),
+                  child: Text(controller.xPlayer.text == ''
+                      ? 'Computer'
+                      : controller.xPlayer.text),
+                ),
                 Text(
                   '${controller.xPlayerScore.value}',
                   style: const TextStyle(fontSize: 30),
