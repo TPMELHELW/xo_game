@@ -8,7 +8,6 @@ class BoardController extends GetxController {
   static BoardController get instance => Get.find<BoardController>();
   late TextEditingController xPlayer, oPlayer;
 
-  ///variable
   late Rx<bool> isOturn, isEnd;
   late RxList<String> options;
   late Rx<int> xPlayerScore, oPlayerScore, draw;
@@ -26,20 +25,17 @@ class BoardController extends GetxController {
     [2, 5, 8]
   ];
 
-  ///Reset Game fun
   void initGame() {
     options.value = ['', '', '', '', '', '', '', '', ''];
     isEnd.value = false;
   }
 
-  ///Reset result fun
   void initResult() {
     xPlayerScore.value = 0;
     oPlayerScore.value = 0;
     draw.value = 0;
   }
 
-  ///Check winner
   void checkWinner() async {
     for (var winningPosition in winning) {
       if (options[winningPosition[0]].isNotEmpty) {
@@ -58,7 +54,6 @@ class BoardController extends GetxController {
     checkDrawFun();
   }
 
-  ///Check Tie Fun
   void checkDrawFun() {
     options.contains('')
         ? null
@@ -69,7 +64,6 @@ class BoardController extends GetxController {
           };
   }
 
-  ///Two Player Fun
   void twoPlayerFun(int index) {
     if (isOturn.value && options[index] == '') {
       options[index] = 'O';
@@ -82,7 +76,6 @@ class BoardController extends GetxController {
     }
   }
 
-  ///Select Computer fun
   void selectFun(int index, {bool isComputerMove = false}) {
     if (options[index] == '') {
       options[index] = isOturn.value ? 'O' : 'X';
@@ -97,7 +90,6 @@ class BoardController extends GetxController {
     }
   }
 
-  ///Easy Level
   void easyComputerMove() {
     if (isEnd.value) return;
 
@@ -110,7 +102,6 @@ class BoardController extends GetxController {
     }
   }
 
-  ///Hard Level
   void hardComputerMove() {
     if (isEnd.value) return;
 

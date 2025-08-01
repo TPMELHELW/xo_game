@@ -17,7 +17,7 @@ class TextFieldWidget extends StatelessWidget {
         filled: true,
         contentPadding:
             const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-        fillColor: const Color.fromARGB(255, 223, 222, 222),
+        fillColor: Colors.grey,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(15),

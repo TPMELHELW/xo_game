@@ -37,7 +37,7 @@ class PlayerResultWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
+                      color: Colors.blueGrey,
                     ),
                     child: const Text('Draw')),
                 Text(

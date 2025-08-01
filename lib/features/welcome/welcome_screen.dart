@@ -48,7 +48,7 @@ class WelcomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 30),
                       value: controller.dropdownValue.value,
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      style: const TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.white),
                       onChanged: (String? value) {
                         controller.dropdownValue.value = value!;
                       },
