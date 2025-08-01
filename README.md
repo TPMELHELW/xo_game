@@ -15,7 +15,7 @@ A classic **Tic Tac Toe** game made using **Flutter**, featuring a clean UI, sou
 ## 🚀 Tech Stack
 
 - Flutter 💙
-- Provider (or GetX) for state management
+- GetX for state management
 - Dart OOP principles
 - Responsive design
 
