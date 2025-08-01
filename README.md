@@ -1,16 +1,38 @@
-# xo_game
+# ❌⭕ Tic Tac Toe - Flutter Game
 
-A new Flutter project.
+A classic **Tic Tac Toe** game made using **Flutter**, featuring a clean UI, sound effects, and responsive layout.
+---
 
-## Getting Started
+## 🎮 Features
 
-This project is a starting point for a Flutter application.
+- Two Player Mode (PvP on same device)
+- Simple and clean game UI
+- Reset & replay functionality
+- No ads, 100% free
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter 💙
+- Provider (or GetX) for state management
+- Dart OOP principles
+- Responsive design
+
+---
+
+## 📷 Screenshots
+
+| Welcome Screen | Computer | Two Player |
+|------------|---------|------------|
+| ![start](assets/images/welcome.jpg) | ![in_game](assets/images/computer.jpg) | ![game_over](assets/images/two_player.jpg) |
+
+---
+
+
+## 📥 Download APK
+
+Install it on your Android device:  
+📱 **[Download APK](https://drive.google.com/file/d/1k0-1t96tmNWv3cbzIa6SQ4N4lVs9BK3L/view?usp=drive_link)**
+
+---
