@@ -1,6 +1,6 @@
 # ❌⭕ Tic Tac Toe - Flutter Game
 
-A classic **Tic Tac Toe** game made using **Flutter**, featuring a clean UI, sound effects, and responsive layout.
+A classic **Tic Tac Toe** game made using **Flutter**, featuring a clean UI, and responsive layout.
 ---
 
 ## 🎮 Features
